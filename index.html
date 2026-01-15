@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pobieranie arkuszy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+
+        .header {
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #555;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover {
+            border-color: #3498db;
+            color: #3498db;
+        }
+
+        .filter-btn.active {
+            background-color: #3498db;
+            color: white;
+            border-color: #3498db;
+        }
+
+        .year-section {
+            margin-bottom: 40px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .year-header {
+            background: linear-gradient(to right, #3498db, #2c3e50);
+            color: white;
+            padding: 15px 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .month-group {
+            border-bottom: 1px solid #eee;
+            padding: 20px;
+        }
+
+        .month-group:last-child {
+            border-bottom: none;
+        }
+
+        .month-title {
+            font-size: 16px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #f0f0f0;
+            font-weight: 600;
+        }
+
+        .files-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .file-item {
+            display: block;
+            padding: 12px 15px;
+            background: #f8fafc;
+            border: 1px solid #b8b8b8;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #2c3e50;
+            transition: all 0.2s;
+            font-size: 14px;
+            position: relative;
+            padding-right: 35px;
+        }
+
+        .file-item:hover {
+            background: #edf5ff;
+            border-color: #3498db;
+            transform: translateY(-2px);
+            box-shadow: 0 3px 6px rgba(52, 152, 219, 0.1);
+        }
+
+        .file-item::after {
+            content: "↓";
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #3498db;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 50px 20px;
+            background: white;
+            border-radius: 8px;
+            color: #7f8c8d;
+            font-style: italic;
+            display: none;
+        }
+
+        .year-section:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 10px;
+            }
+            
+            .files-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .filters {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Arkusze do pobrania</h1>
+        </div>
+
+        <div class="filters">
+            <button class="filter-btn active" data-year="all">Wszystkie lata</button>
+            <button class="filter-btn" data-year="2025">2025</button>
+            <button class="filter-btn" data-year="2024">2024</button>
+            <button class="filter-btn" data-year="2023">2023</button>
+        </div>
+
+        <div id="files-container">
+            <!-- Pliki będą generowane przez JavaScript -->
+        </div>
+
+        <div id="no-results" class="no-results">
+            Brak arkuszy dla wybranego roku.
+        </div>
+    </div>
+
+    <script>
+        // Dane arkuszy - posortowane malejąco według roku
+        const filesData = [
+            { month: "Czerwiec", year: 2025, versions: 12 },
+            { month: "Styczeń", year: 2025, versions: 12 },
+            { month: "Czerwiec", year: 2024, versions: 12 },
+            { month: "Styczeń", year: 2024, versions: 12 },
+            { month: "Styczeń", year: 2023, versions: 5 }
+        ];
+
+        // Funkcja do grupowania danych po roku
+        function groupByYear(data) {
+            const grouped = {};
+            data.forEach(item => {
+                if (!grouped[item.year]) {
+                    grouped[item.year] = [];
+                }
+                grouped[item.year].push(item);
+            });
+            return grouped;
+        }
+
+        // Funkcja renderująca pliki
+        function renderFiles(selectedYear = 'all') {
+            const container = document.getElementById('files-container');
+            const noResults = document.getElementById('no-results');
+            container.innerHTML = '';
+            
+            const groupedData = groupByYear(filesData);
+            const years = Object.keys(groupedData).sort((a, b) => b - a);
+            
+            let hasResults = false;
+            
+            years.forEach(year => {
+                if (selectedYear === 'all' || year === selectedYear) {
+                    hasResults = true;
+                    
+                    // Sekcja roku
+                    const yearSection = document.createElement('div');
+                    yearSection.className = 'year-section';
+                    
+                    // Nagłówek roku
+                    const yearHeader = document.createElement('div');
+                    yearHeader.className = 'year-header';
+                    yearHeader.textContent = `Rok ${year}`;
+                    
+                    // Kontener dla miesiący w danym roku
+                    const monthsContainer = document.createElement('div');
+                    
+                    // Sortuj miesiące w roku: Czerwiec przed Styczniem
+                    const months = groupedData[year].sort((a, b) => {
+                        const monthOrder = { "Czerwiec": 1, "Styczeń": 2 };
+                        return monthOrder[a.month] - monthOrder[b.month];
+                    });
+                    
+                    // Dodaj każdy miesiąc
+                    months.forEach(monthData => {
+                        const monthGroup = document.createElement('div');
+                        monthGroup.className = 'month-group';
+                        
+                        const monthTitle = document.createElement('div');
+                        monthTitle.className = 'month-title';
+                        monthTitle.textContent = monthData.month;
+                        
+                        const filesList = document.createElement('div');
+                        filesList.className = 'files-list';
+                        
+                        // Generowanie linków
+                        for (let i = 1; i <= monthData.versions; i++) {
+                            const fileName = `${monthData.month} ${monthData.year} wersja ${i}`;
+                            const fileUrl = `download/${encodeURIComponent(fileName)}.zip`;
+                            
+                            const fileItem = document.createElement('a');
+                            fileItem.className = 'file-item';
+                            fileItem.href = fileUrl;
+                            fileItem.setAttribute('download', `${fileName}.zip`);
+                            fileItem.textContent = fileName;
+                            
+                            filesList.appendChild(fileItem);
+                        }
+                        
+                        monthGroup.appendChild(monthTitle);
+                        monthGroup.appendChild(filesList);
+                        monthsContainer.appendChild(monthGroup);
+                    });
+                    
+                    yearSection.appendChild(yearHeader);
+                    yearSection.appendChild(monthsContainer);
+                    container.appendChild(yearSection);
+                }
+            });
+            
+            noResults.style.display = hasResults ? 'none' : 'block';
+        }
+
+        // Inicjalizacja filtrów
+        function initFilters() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Usuń klasę active ze wszystkich przycisków
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Dodaj klasę active do klikniętego przycisku
+                    button.classList.add('active');
+                    
+                    // Pobierz wybrany rok i renderuj
+                    const selectedYear = button.getAttribute('data-year');
+                    renderFiles(selectedYear);
+                });
+            });
+        }
+
+        // Start po załadowaniu strony
+        document.addEventListener('DOMContentLoaded', () => {
+            renderFiles();
+            initFilters();
+        });
+    </script>
+</body>
+
+</html>

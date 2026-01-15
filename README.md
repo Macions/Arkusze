@@ -8,4 +8,5 @@ Każdy link odpowiada konkretnemu arkuszowi – nazwa linku = nazwa pobieranego 
 2. Kliknij na nazwę arkusza, który chcesz pobrać.  
 3. Plik `.zip` zostanie pobrany automatycznie.
 
-## Struktura folderów:
+
+# Miłej pracy misie 😘

@@ -17,6 +17,7 @@
             background-color: #f5f7fa;
             padding: 20px;
             color: #333;
+            padding-bottom: 120px;
         }
 
         .container {
@@ -166,6 +167,229 @@
             margin-bottom: 0;
         }
 
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(-45deg, #222, #333, #444, #555);
+            background-size: 400% 400%;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            font-family: sans-serif;
+            margin-top: 40em !important;
+            overflow: hidden;
+            animation: gradientFlow 15s ease infinite;
+        }
+
+        /* Płynące cząsteczki */
+        footer::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background-image:
+                radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 2px, transparent 3px),
+                radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.08) 1px, transparent 2px),
+                radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 3px, transparent 4px);
+            background-size: 50px 50px;
+            animation: particlesFloat 20s linear infinite;
+            z-index: 1;
+        }
+
+        /* Efekt świateł */
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: white;
+            border-radius: 50%;
+            animation: particleFloat 6s linear infinite;
+        }
+
+        .particle:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .particle:nth-child(2) {
+            top: 60%;
+            left: 30%;
+            animation-delay: 1s;
+        }
+
+        .particle:nth-child(3) {
+            top: 40%;
+            left: 70%;
+            animation-delay: 2s;
+        }
+
+        .particle:nth-child(4) {
+            top: 80%;
+            left: 50%;
+            animation-delay: 3s;
+        }
+
+        .particle:nth-child(5) {
+            top: 30%;
+            left: 90%;
+            animation-delay: 4s;
+        }
+
+        @keyframes gradientFlow {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes particlesFloat {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-50px, -50px) rotate(360deg);
+            }
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100px) translateX(50px);
+                opacity: 0;
+            }
+        }
+
+        footer a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+            position: relative;
+            z-index: 2;
+            padding: 5px 15px;
+            border-radius: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        footer a:hover {
+            color: #fff;
+            background: rgba(76, 175, 80, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+        }
+
+        /* Animacja: zaawansowany pulsujący punkt */
+        .dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: linear-gradient(45deg, #ff0000, #ff6666);
+            border-radius: 50%;
+            margin-left: 10px;
+            animation:
+                pulseAdvanced 1.5s ease-in-out infinite,
+                rotate 4s linear infinite,
+                colorChange 6s ease-in-out infinite;
+            box-shadow:
+                0 0 10px #ff0000,
+                0 0 20px #ff0000,
+                0 0 30px #ff0000;
+            position: relative;
+            z-index: 2;
+        }
+
+        .dot::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            border-radius: 50%;
+            animation: shine 2s linear infinite;
+        }
+
+        @keyframes pulseAdvanced {
+
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow:
+                    0 0 10px #ff0000,
+                    0 0 20px #ff0000,
+                    0 0 30px #ff0000;
+            }
+
+            50% {
+                transform: scale(1.3);
+                box-shadow:
+                    0 0 20px #ff0000,
+                    0 0 40px #ff0000,
+                    0 0 60px #ff0000;
+            }
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes colorChange {
+            0% {
+                filter: hue-rotate(0deg);
+            }
+
+            100% {
+                filter: hue-rotate(360deg);
+            }
+        }
+
+        @keyframes shine {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 0 10px;
@@ -180,7 +404,314 @@
                 justify-content: center;
             }
         }
+
+        .click-effect {
+            position: fixed;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9999;
+            animation: clickRipple 0.6s ease-out;
+        }
+
+        @keyframes clickRipple {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 1;
+            }
+
+            100% {
+                width: 200px;
+                height: 200px;
+                opacity: 0;
+            }
+        }
+
+        /* Pasek informacyjny */
+        .ball-info {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            z-index: 10000;
+            display: none;
+        }
     </style>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Tworzymy kontener na kulki
+            const ballsContainer = document.createElement('div');
+            ballsContainer.id = 'balls-container';
+            ballsContainer.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            overflow: hidden;
+        `;
+            document.body.appendChild(ballsContainer);
+
+            // Kolory dla kulek
+            const colors = [
+                '#FF6B6B', '#4ECDC4', '#FFD166', '#06D6A0',
+                '#118AB2', '#EF476F', '#FFD166', '#26547C',
+                '#FF9A8B', '#FF6B9D', '#A78BFA', '#38BDF8'
+            ];
+
+            // Tablica aktywnych kulek
+            let balls = [];
+            let animationId;
+
+            // Funkcja tworząca kulkę
+            function createBall(x, y) {
+                const ball = document.createElement('div');
+                const size = Math.random() * 40 + 20; // 20-60px
+                const color = colors[Math.floor(Math.random() * colors.length)];
+
+                ball.style.cssText = `
+                position: absolute;
+                width: ${size}px;
+                height: ${size}px;
+                background: ${color};
+                border-radius: 50%;
+                left: ${x - size / 2}px;
+                top: ${y - size / 2}px;
+                pointer-events: none;
+                opacity: 0.9;
+                transform: scale(0);
+                transition: transform 0.3s ease-out, opacity 1s ease-out;
+                box-shadow: 0 0 20px ${color}, 0 0 40px rgba(255,255,255,0.3);
+            `;
+
+                ballsContainer.appendChild(ball);
+
+                // Animacja pojawienia się
+                setTimeout(() => {
+                    ball.style.transform = 'scale(1)';
+                }, 10);
+
+                // Fizyka kuli
+                const physics = {
+                    x: x,
+                    y: y,
+                    vx: (Math.random() - 0.5) * 12, // Prędkość X
+                    vy: (Math.random() - 0.5) * 12, // Prędkość Y
+                    size: size,
+                    friction: 0.98,
+                    gravity: 0.2,
+                    bounciness: 0.8,
+                    life: 200, // 100 klatek życia
+                    element: ball
+                };
+
+                balls.push(physics);
+
+                // Start animacji jeśli nie działa
+                if (!animationId) {
+                    animateBalls();
+                }
+
+                return physics;
+            }
+
+            // Animacja ruchu kulek
+            function animateBalls() {
+                balls = balls.filter(ball => ball.life > 0);
+
+                if (balls.length === 0) {
+                    cancelAnimationFrame(animationId);
+                    animationId = null;
+                    return;
+                }
+
+                balls.forEach(ball => {
+                    // Zastosuj grawitację
+                    ball.vy += ball.gravity;
+
+                    // Zastosuj tarcie
+                    ball.vx *= ball.friction;
+                    ball.vy *= ball.friction;
+
+                    // Aktualizuj pozycję
+                    ball.x += ball.vx;
+                    ball.y += ball.vy;
+
+                    // Odbijanie od krawędzi
+                    const maxX = window.innerWidth - ball.size;
+                    const maxY = window.innerHeight - ball.size;
+
+                    if (ball.x <= 0) {
+                        ball.x = 0;
+                        ball.vx = -ball.vx * ball.bounciness;
+                    } else if (ball.x >= maxX) {
+                        ball.x = maxX;
+                        ball.vx = -ball.vx * ball.bounciness;
+                    }
+
+                    if (ball.y <= 0) {
+                        ball.y = 0;
+                        ball.vy = -ball.vy * ball.bounciness;
+                    } else if (ball.y >= maxY) {
+                        ball.y = maxY;
+                        ball.vy = -ball.vy * ball.bounciness;
+                    }
+
+                    // Aktualizuj pozycję elementu
+                    ball.element.style.left = `${ball.x}px`;
+                    ball.element.style.top = `${ball.y}px`;
+
+                    // Zmniejszanie życia
+                    ball.life--;
+
+                    // Efekt zanikania
+                    if (ball.life < 30) {
+                        ball.element.style.opacity = (ball.life / 30).toString();
+                        ball.element.style.transform = `scale(${0.5 + (ball.life / 30) * 0.5})`;
+                    }
+
+                    // Usuń kulkę po zakończeniu życia
+                    if (ball.life <= 0) {
+                        ball.element.style.transition = 'all 0.5s ease-out';
+                        ball.element.style.opacity = '0';
+                        ball.element.style.transform = 'scale(0)';
+
+                        setTimeout(() => {
+                            if (ball.element.parentNode) {
+                                ball.element.remove();
+                            }
+                        }, 500);
+                    }
+                });
+
+                animationId = requestAnimationFrame(animateBalls);
+            }
+
+            // Obsługa kliknięcia
+            document.addEventListener('click', function (e) {
+                // Nie tworz kulek po kliknięciu w przyciski/linki
+                if (e.target.tagName === 'BUTTON' ||
+                    e.target.tagName === 'A' ||
+                    e.target.closest('button') ||
+                    e.target.closest('a')) {
+                    return;
+                }
+
+                // Tworzymy kilka kulek naraz dla lepszego efektu
+                const ballCount = Math.floor(Math.random() * 3) + 3; // 3-5 kulek
+
+                for (let i = 0; i < ballCount; i++) {
+                    // Losowe przesunięcie od miejsca kliknięcia
+                    const offsetX = (Math.random() - 0.5) * 100;
+                    const offsetY = (Math.random() - 0.5) * 100;
+
+                    createBall(e.clientX + offsetX, e.clientY + offsetY);
+                }
+
+                // Efekt dźwiękowy (opcjonalny)
+                playClickSound();
+            });
+
+            // Efekt dźwiękowy (opcjonalny)
+            function playClickSound() {
+                try {
+                    // Tworzenie prostego dźwięku
+                    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                    const oscillator = audioContext.createOscillator();
+                    const gainNode = audioContext.createGain();
+
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioContext.destination);
+
+                    // Losowa częstotliwość
+                    oscillator.frequency.value = 300 + Math.random() * 400;
+                    oscillator.type = 'sine';
+
+                    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+
+                    oscillator.start(audioContext.currentTime);
+                    oscillator.stop(audioContext.currentTime + 0.5);
+                } catch (e) {
+                    // Ignoruj błędy audio
+                }
+            }
+
+            // Obsługa dotyku dla urządzeń mobilnych
+            document.addEventListener('touchstart', function (e) {
+                e.preventDefault();
+                if (e.touches.length > 0) {
+                    const touch = e.touches[0];
+                    const ballCount = Math.floor(Math.random() * 3) + 3;
+
+                    for (let i = 0; i < ballCount; i++) {
+                        const offsetX = (Math.random() - 0.5) * 100;
+                        const offsetY = (Math.random() - 0.5) * 100;
+                        createBall(touch.clientX + offsetX, touch.clientY + offsetY);
+                    }
+
+                    playClickSound();
+                }
+            }, { passive: false });
+
+            // Czyszczenie kulek przy zmianie rozmiaru okna
+            window.addEventListener('resize', function () {
+                // Usuń wszystkie kulki przy zmianie rozmiaru
+                balls.forEach(ball => {
+                    ball.life = 0;
+                });
+            });
+
+            // Dodaj styl CSS dla lepszej wydajności
+            const style = document.createElement('style');
+            style.textContent = `
+            #balls-container * {
+                will-change: transform, opacity;
+            }
+            
+            /* Efekt hover na kulkach */
+            .ball-hover {
+                animation: ballPulse 0.5s ease-out;
+            }
+            
+            @keyframes ballPulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.2); }
+                100% { transform: scale(1); }
+            }
+        `;
+            document.head.appendChild(style);
+
+            // Funkcja do tworzenia efektu "deszczu" kulek
+            function createBallRain(count = 20) {
+                for (let i = 0; i < count; i++) {
+                    setTimeout(() => {
+                        const x = Math.random() * window.innerWidth;
+                        const y = -100; // Start nad ekranem
+                        createBall(x, y);
+                    }, i * 50); // Opóźnienie między kulkami
+                }
+            }
+
+            // Eksport funkcji do globalnego zakresu (opcjonalnie)
+            window.createBallRain = createBallRain;
+
+            console.log('Kulki interaktywne załadowane! Kliknij w dowolne miejsce, aby stworzyć kulki.');
+        });
+    </script>
 </head>
 
 <body>
@@ -259,6 +790,7 @@
             </div>
 
             <div class="year-section" data-year="2024">
+
                 <div class="month-group">
                     <div class="month-title">Czerwiec 2024</div>
                     <div class="files-container">
@@ -268,8 +800,27 @@
                             wersja 2</a>
                         <a class="file-item" data-year="2024" href="download/Czerwiec 2024 wersja 3.zip">Czerwiec 2024
                             wersja 3</a>
+                        <a class="file-item" data-year="2024" href="download/Czerwiec 2024 wersja 4.zip">Czerwiec 2024
+                            wersja 4</a>
+                        <a class="file-item" data-year="2024" href="download/Czerwiec 2024 wersja 5.zip">Czerwiec 2024
+                            wersja 5</a>
+                        <a class="file-item" data-year="2024" href="download/Czerwiec 2024 wersja 6.zip">Czerwiec 2024
+                            wersja 6</a>
+                        <a class="file-item" data-year="2024" href="download/Czerwiec 2024 wersja 7.zip">Czerwiec 2024
+                            wersja 7</a>
+                        <a class="file-item" data-year="2024" href="download/Czerwiec 2024 wersja 8.zip">Czerwiec 2024
+                            wersja 8</a>
+                        <a class="file-item" data-year="2024" href="download/Czerwiec 2024 wersja 9.zip">Czerwiec 2024
+                            wersja 9</a>
+                        <a class="file-item" data-year="2024" href="download/Czerwiec 2024 wersja 10.zip">Czerwiec 2024
+                            wersja 10</a>
+                        <a class="file-item" data-year="2024" href="download/Czerwiec 2024 wersja 11.zip">Czerwiec 2024
+                            wersja 11</a>
+                        <a class="file-item" data-year="2024" href="download/Czerwiec 2024 wersja 12.zip">Czerwiec 2024
+                            wersja 12</a>
                     </div>
                 </div>
+
                 <div class="month-group">
                     <div class="month-title">Styczeń 2024</div>
                     <div class="files-container">
@@ -277,11 +828,33 @@
                             wersja 1</a>
                         <a class="file-item" data-year="2024" href="download/Styczeń 2024 wersja 2.zip">Styczeń 2024
                             wersja 2</a>
+                        <a class="file-item" data-year="2024" href="download/Styczeń 2024 wersja 3.zip">Styczeń 2024
+                            wersja 3</a>
+                        <a class="file-item" data-year="2024" href="download/Styczeń 2024 wersja 4.zip">Styczeń 2024
+                            wersja 4</a>
+                        <a class="file-item" data-year="2024" href="download/Styczeń 2024 wersja 5.zip">Styczeń 2024
+                            wersja 5</a>
+                        <a class="file-item" data-year="2024" href="download/Styczeń 2024 wersja 6.zip">Styczeń 2024
+                            wersja 6</a>
+                        <a class="file-item" data-year="2024" href="download/Styczeń 2024 wersja 7.zip">Styczeń 2024
+                            wersja 7</a>
+                        <a class="file-item" data-year="2024" href="download/Styczeń 2024 wersja 8.zip">Styczeń 2024
+                            wersja 8</a>
+                        <a class="file-item" data-year="2024" href="download/Styczeń 2024 wersja 9.zip">Styczeń 2024
+                            wersja 9</a>
+                        <a class="file-item" data-year="2024" href="download/Styczeń 2024 wersja 10.zip">Styczeń 2024
+                            wersja 10</a>
+                        <a class="file-item" data-year="2024" href="download/Styczeń 2024 wersja 11.zip">Styczeń 2024
+                            wersja 11</a>
+                        <a class="file-item" data-year="2024" href="download/Styczeń 2024 wersja 12.zip">Styczeń 2024
+                            wersja 12</a>
                     </div>
                 </div>
+
             </div>
 
             <div class="year-section" data-year="2023">
+
                 <div class="month-group">
                     <div class="month-title">Styczeń 2023</div>
                     <div class="files-container">
@@ -289,10 +862,26 @@
                             wersja 1</a>
                         <a class="file-item" data-year="2023" href="download/Styczeń 2023 wersja 2.zip">Styczeń 2023
                             wersja 2</a>
+                        <a class="file-item" data-year="2023" href="download/Styczeń 2023 wersja 3.zip">Styczeń 2023
+                            wersja 3</a>
+                        <a class="file-item" data-year="2023" href="download/Styczeń 2023 wersja 4.zip">Styczeń 2023
+                            wersja 4</a>
+                        <a class="file-item" data-year="2023" href="download/Styczeń 2023 wersja 5.zip">Styczeń 2023
+                            wersja 5</a>
                     </div>
                 </div>
+
             </div>
+
         </div>
+
+        <footer>
+            <p>Created by Maciej Czarnecki in 2026 |
+                <a href="https://github.com/Macions/Arkusze" target="_blank">GitHub</a>
+                <span class="dot"></span>
+            </p>
+        </footer>
+
 
         <script>
             const filterButtons = document.querySelectorAll('.filter-btn');

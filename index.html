@@ -41,7 +41,7 @@
             padding: 15px;
             background: white;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
 
         .filter-btn {
@@ -71,7 +71,9 @@
             background: white;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            display: block;
+
         }
 
         .year-header {
@@ -98,16 +100,26 @@
             padding-bottom: 8px;
             border-bottom: 2px solid #f0f0f0;
             font-weight: 600;
+            display: block;
+
         }
 
-        .files-list {
+
+        .month-group>.file-item {
+            display: none;
+
+        }
+
+
+        .files-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
         }
 
         .file-item {
-            display: block;
+            display: block !important;
+
             padding: 12px 15px;
             background: #f8fafc;
             border: 1px solid #b8b8b8;
@@ -118,6 +130,8 @@
             font-size: 14px;
             position: relative;
             padding-right: 35px;
+            margin-bottom: 0;
+
         }
 
         .file-item:hover {
@@ -156,11 +170,11 @@
             .container {
                 padding: 0 10px;
             }
-            
-            .files-list {
+
+            .files-container {
                 grid-template-columns: 1fr;
             }
-            
+
             .filters {
                 flex-wrap: wrap;
                 justify-content: center;
@@ -183,134 +197,114 @@
         </div>
 
         <div id="files-container">
-            <!-- Pliki będą generowane przez JavaScript -->
+            <div class="year-section" data-year="2025">
+                <div class="month-group">
+                    <div class="month-title">Czerwiec 2025</div>
+                    <div class="files-container">
+                        <a class="file-item" data-year="2025" href="download/Czerwiec 2025 wersja 1.zip">Czerwiec 2025
+                            wersja 1</a>
+                        <a class="file-item" data-year="2025" href="download/Czerwiec 2025 wersja 2.zip">Czerwiec 2025
+                            wersja 2</a>
+                        <a class="file-item" data-year="2025" href="download/Czerwiec 2025 wersja 3.zip">Czerwiec 2025
+                            wersja 3</a>
+                        <a class="file-item" data-year="2025" href="download/Czerwiec 2025 wersja 4.zip">Czerwiec 2025
+                            wersja 4</a>
+                        <a class="file-item" data-year="2025" href="download/Czerwiec 2025 wersja 5.zip">Czerwiec 2025
+                            wersja 5</a>
+                        <a class="file-item" data-year="2025" href="download/Czerwiec 2025 wersja 6.zip">Czerwiec 2025
+                            wersja 6</a>
+                        <a class="file-item" data-year="2025" href="download/Czerwiec 2025 wersja 7.zip">Czerwiec 2025
+                            wersja 7</a>
+                        <a class="file-item" data-year="2025" href="download/Czerwiec 2025 wersja 8.zip">Czerwiec 2025
+                            wersja 8</a>
+                        <a class="file-item" data-year="2025" href="download/Czerwiec 2025 wersja 9.zip">Czerwiec 2025
+                            wersja 9</a>
+                        <a class="file-item" data-year="2025" href="download/Czerwiec 2025 wersja 10.zip">Czerwiec 2025
+                            wersja 10</a>
+                        <a class="file-item" data-year="2025" href="download/Czerwiec 2025 wersja 11.zip">Czerwiec 2025
+                            wersja 11</a>
+                        <a class="file-item" data-year="2025" href="download/Czerwiec 2025 wersja 12.zip">Czerwiec 2025
+                            wersja 12</a>
+                    </div>
+                </div>
+                <div class="month-group">
+                    <div class="month-title">Styczeń 2025</div>
+                    <div class="files-container">
+                        <a class="file-item" data-year="2025" href="download/Styczeń 2025 wersja 1.zip">Styczeń 2025
+                            wersja 1</a>
+                        <a class="file-item" data-year="2025" href="download/Styczeń 2025 wersja 2.zip">Styczeń 2025
+                            wersja 2</a>
+                        <a class="file-item" data-year="2025" href="download/Styczeń 2025 wersja 3.zip">Styczeń 2025
+                            wersja 3</a>
+                        <a class="file-item" data-year="2025" href="download/Styczeń 2025 wersja 4.zip">Styczeń 2025
+                            wersja 4</a>
+                        <a class="file-item" data-year="2025" href="download/Styczeń 2025 wersja 5.zip">Styczeń 2025
+                            wersja 5</a>
+                        <a class="file-item" data-year="2025" href="download/Styczeń 2025 wersja 6.zip">Styczeń 2025
+                            wersja 6</a>
+                        <a class="file-item" data-year="2025" href="download/Styczeń 2025 wersja 7.zip">Styczeń 2025
+                            wersja 7</a>
+                        <a class="file-item" data-year="2025" href="download/Styczeń 2025 wersja 8.zip">Styczeń 2025
+                            wersja 8</a>
+                        <a class="file-item" data-year="2025" href="download/Styczeń 2025 wersja 9.zip">Styczeń 2025
+                            wersja 9</a>
+                        <a class="file-item" data-year="2025" href="download/Styczeń 2025 wersja 10.zip">Styczeń 2025
+                            wersja 10</a>
+                        <a class="file-item" data-year="2025" href="download/Styczeń 2025 wersja 11.zip">Styczeń 2025
+                            wersja 11</a>
+                        <a class="file-item" data-year="2025" href="download/Styczeń 2025 wersja 12.zip">Styczeń 2025
+                            wersja 12</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="year-section" data-year="2024">
+                <div class="month-group">
+                    <div class="month-title">Czerwiec 2024</div>
+                    <div class="files-container">
+                        <a class="file-item" data-year="2024" href="download/Czerwiec 2024 wersja 1.zip">Czerwiec 2024
+                            wersja 1</a>
+                        <a class="file-item" data-year="2024" href="download/Czerwiec 2024 wersja 2.zip">Czerwiec 2024
+                            wersja 2</a>
+                        <a class="file-item" data-year="2024" href="download/Czerwiec 2024 wersja 3.zip">Czerwiec 2024
+                            wersja 3</a>
+                    </div>
+                </div>
+                <div class="month-group">
+                    <div class="month-title">Styczeń 2024</div>
+                    <div class="files-container">
+                        <a class="file-item" data-year="2024" href="download/Styczeń 2024 wersja 1.zip">Styczeń 2024
+                            wersja 1</a>
+                        <a class="file-item" data-year="2024" href="download/Styczeń 2024 wersja 2.zip">Styczeń 2024
+                            wersja 2</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="year-section" data-year="2023">
+                <div class="month-group">
+                    <div class="month-title">Styczeń 2023</div>
+                    <div class="files-container">
+                        <a class="file-item" data-year="2023" href="download/Styczeń 2023 wersja 1.zip">Styczeń 2023
+                            wersja 1</a>
+                        <a class="file-item" data-year="2023" href="download/Styczeń 2023 wersja 2.zip">Styczeń 2023
+                            wersja 2</a>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div id="no-results" class="no-results">
-            Brak arkuszy dla wybranego roku.
-        </div>
-    </div>
-
-    <script>
-        // Dane arkuszy - posortowane malejąco według roku
-        const filesData = [
-            { month: "Czerwiec", year: 2025, versions: 12 },
-            { month: "Styczeń", year: 2025, versions: 12 },
-            { month: "Czerwiec", year: 2024, versions: 12 },
-            { month: "Styczeń", year: 2024, versions: 12 },
-            { month: "Styczeń", year: 2023, versions: 5 }
-        ];
-
-        // Funkcja do grupowania danych po roku
-        function groupByYear(data) {
-            const grouped = {};
-            data.forEach(item => {
-                if (!grouped[item.year]) {
-                    grouped[item.year] = [];
-                }
-                grouped[item.year].push(item);
-            });
-            return grouped;
-        }
-
-        // Funkcja renderująca pliki
-        function renderFiles(selectedYear = 'all') {
-            const container = document.getElementById('files-container');
-            const noResults = document.getElementById('no-results');
-            container.innerHTML = '';
-            
-            const groupedData = groupByYear(filesData);
-            const years = Object.keys(groupedData).sort((a, b) => b - a);
-            
-            let hasResults = false;
-            
-            years.forEach(year => {
-                if (selectedYear === 'all' || year === selectedYear) {
-                    hasResults = true;
-                    
-                    // Sekcja roku
-                    const yearSection = document.createElement('div');
-                    yearSection.className = 'year-section';
-                    
-                    // Nagłówek roku
-                    const yearHeader = document.createElement('div');
-                    yearHeader.className = 'year-header';
-                    yearHeader.textContent = `Rok ${year}`;
-                    
-                    // Kontener dla miesiący w danym roku
-                    const monthsContainer = document.createElement('div');
-                    
-                    // Sortuj miesiące w roku: Czerwiec przed Styczniem
-                    const months = groupedData[year].sort((a, b) => {
-                        const monthOrder = { "Czerwiec": 1, "Styczeń": 2 };
-                        return monthOrder[a.month] - monthOrder[b.month];
-                    });
-                    
-                    // Dodaj każdy miesiąc
-                    months.forEach(monthData => {
-                        const monthGroup = document.createElement('div');
-                        monthGroup.className = 'month-group';
-                        
-                        const monthTitle = document.createElement('div');
-                        monthTitle.className = 'month-title';
-                        monthTitle.textContent = monthData.month;
-                        
-                        const filesList = document.createElement('div');
-                        filesList.className = 'files-list';
-                        
-                        // Generowanie linków
-                        for (let i = 1; i <= monthData.versions; i++) {
-                            const fileName = `${monthData.month} ${monthData.year} wersja ${i}`;
-                            const fileUrl = `download/${encodeURIComponent(fileName)}.zip`;
-                            
-                            const fileItem = document.createElement('a');
-                            fileItem.className = 'file-item';
-                            fileItem.href = fileUrl;
-                            fileItem.setAttribute('download', `${fileName}.zip`);
-                            fileItem.textContent = fileName;
-                            
-                            filesList.appendChild(fileItem);
-                        }
-                        
-                        monthGroup.appendChild(monthTitle);
-                        monthGroup.appendChild(filesList);
-                        monthsContainer.appendChild(monthGroup);
-                    });
-                    
-                    yearSection.appendChild(yearHeader);
-                    yearSection.appendChild(monthsContainer);
-                    container.appendChild(yearSection);
-                }
-            });
-            
-            noResults.style.display = hasResults ? 'none' : 'block';
-        }
-
-        // Inicjalizacja filtrów
-        function initFilters() {
+        <script>
             const filterButtons = document.querySelectorAll('.filter-btn');
-            
-            filterButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    // Usuń klasę active ze wszystkich przycisków
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    
-                    // Dodaj klasę active do klikniętego przycisku
-                    button.classList.add('active');
-                    
-                    // Pobierz wybrany rok i renderuj
-                    const selectedYear = button.getAttribute('data-year');
-                    renderFiles(selectedYear);
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const year = btn.getAttribute('data-year');
+                    document.querySelectorAll('.year-section').forEach(section => {
+                        section.style.display = (year === 'all' || section.getAttribute('data-year') === year) ? 'block' : 'none';
+                    });
                 });
             });
-        }
-
-        // Start po załadowaniu strony
-        document.addEventListener('DOMContentLoaded', () => {
-            renderFiles();
-            initFilters();
-        });
-    </script>
+        </script>
 </body>
-
-</html>

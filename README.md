@@ -1,12 +1,11 @@
-Arkusze Egzaminacyjne – Strona Pobierania
+# Arkusze Egzaminacyjne – Strona Pobierania
 
-Ta strona umożliwia szybkie pobieranie arkuszy egzaminacyjnych dla klasy.
-Każdy link odpowiada konkretnemu arkuszowi – nazwa linku = nazwa pobieranego pliku .zip w folderze download.
+Ta strona umożliwia szybkie pobieranie arkuszy egzaminacyjnych dla klasy.  
+Każdy link odpowiada konkretnemu arkuszowi – nazwa linku = nazwa pobieranego pliku `.zip` w folderze `download`.
 
-Jak używać:
+## Jak używać:
+1. Otwórz stronę w przeglądarce.  
+2. Kliknij na nazwę arkusza, który chcesz pobrać.  
+3. Plik `.zip` zostanie pobrany automatycznie.
 
-Otwórz stronę w przeglądarce.
-
-Kliknij na nazwę arkusza, który chcesz pobrać.
-
-Plik .zip zostanie pobrany automatycznie.
+## Struktura folderów:

@@ -46,7 +46,8 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
 
-        .filter-btn {
+        .filter-btn,
+        .lang-btn {
             padding: 8px 16px;
             background: white;
             border: 1px solid #ddd;
@@ -57,12 +58,14 @@
             transition: all 0.2s;
         }
 
-        .filter-btn:hover {
+        .filter-btn:hover,
+        .lang-btn:hover {
             border-color: #3498db;
             color: #3498db;
         }
 
-        .filter-btn.active {
+        .filter-btn.active,
+        .lang-btn.active {
             background-color: #3498db;
             color: white;
             border-color: #3498db;
@@ -120,7 +123,6 @@
         }
 
         .file-item {
-            display: block !important;
 
             padding: 12px 15px;
             background: #f8fafc;
@@ -452,65 +454,96 @@
             <button class="filter-btn" data-year="2024">2024</button>
             <button class="filter-btn" data-year="2023">2023</button>
         </div>
+        <div class="filters" id="langFilters">
+            <button class="lang-btn active" data-lang="all">Wszystkie języki</button>
+            <button class="lang-btn" data-lang="php">PHP</button>
+            <button class="lang-btn" data-lang="js">JS</button>
+        </div>
 
         <div id="files-container">
             <div class="year-section" data-year="2025">
                 <div class="month-group">
                     <div class="month-title">Czerwiec 2025</div>
                     <div class="files-container">
-                        <a class="file-item" data-year="2025" href="download/Czerwiec 2025 wersja 1.zip">Czerwiec 2025
-                            wersja 1 <div class="language php">PHP</div></a>
-                        <a class="file-item" data-year="2025" href="download/Czerwiec 2025 wersja 2.zip">Czerwiec 2025
-                            wersja 2 <div class="language js">JS</div></a>
-                        <a class="file-item" data-year="2025" href="download/Czerwiec 2025 wersja 3.zip">Czerwiec 2025
-                            wersja 3 <div class="language php">PHP</div></a>
-                        <a class="file-item" data-year="2025" href="download/Czerwiec 2025 wersja 4.zip">Czerwiec 2025
-                            wersja 4 <div class="language php">PHP</div></a>
-                        <a class="file-item" data-year="2025" href="download/Czerwiec 2025 wersja 5.zip">Czerwiec 2025
-                            wersja 5 <div class="language php">PHP</div></a>
-                        <a class="file-item" data-year="2025" href="download/Czerwiec 2025 wersja 6.zip">Czerwiec 2025
-                            wersja 6 <div class="language js">JS</div></a>
-                        <a class="file-item" data-year="2025" href="download/Czerwiec 2025 wersja 7.zip">Czerwiec 2025
-                            wersja 7 <div class="language php">PHP</div></a>
-                        <a class="file-item" data-year="2025" href="download/Czerwiec 2025 wersja 8.zip">Czerwiec 2025
-                            wersja 8 <div class="language php">PHP</div> <div class="language js">JS</div></a>
-                        <a class="file-item" data-year="2025" href="download/Czerwiec 2025 wersja 9.zip">Czerwiec 2025
-                            wersja 9 <div class="language php">PHP</div></a>
-                        <a class="file-item" data-year="2025" href="download/Czerwiec 2025 wersja 10.zip">Czerwiec 2025
-                            wersja 10 <div class="language php">PHP</div></a>
-                        <a class="file-item" data-year="2025" href="download/Czerwiec 2025 wersja 11.zip">Czerwiec 2025
-                            wersja 11 <div class="language php">PHP</div></a>
-                        <a class="file-item" data-year="2025" href="download/Czerwiec 2025 wersja 12.zip">Czerwiec 2025
-                            wersja 12 <div class="language php">PHP</div></a>
+                        <a class="file-item" data-year="2025" href="download/Czerwiec 2025 wersja 1.zip"
+                            data-lang="php">Czerwiec 2025
+                            wersja 1 <span class="language php" data-lang="php">PHP</span></a>
+                        <a class="file-item" data-year="2025" href="download/Czerwiec 2025 wersja 2.zip"
+                            data-lang="js">Czerwiec 2025
+                            wersja 2 <span class="language js" data-lang="js">JS</span></a>
+                        <a class="file-item" data-year="2025" href="download/Czerwiec 2025 wersja 3.zip"
+                            data-lang="php">Czerwiec 2025
+                            wersja 3 <span class="language php" data-lang="php">PHP</span></a>
+                        <a class="file-item" data-year="2025" href="download/Czerwiec 2025 wersja 4.zip"
+                            data-lang="php">Czerwiec 2025
+                            wersja 4 <span class="language php" data-lang="php">PHP</span></a>
+                        <a class="file-item" data-year="2025" href="download/Czerwiec 2025 wersja 5.zip"
+                            data-lang="php">Czerwiec 2025
+                            wersja 5 <span class="language php" data-lang="php">PHP</span></a>
+                        <a class="file-item" data-year="2025" href="download/Czerwiec 2025 wersja 6.zip"
+                            data-lang="js">Czerwiec 2025
+                            wersja 6 <span class="language js" data-lang="js">JS</span></a>
+                        <a class="file-item" data-year="2025" href="download/Czerwiec 2025 wersja 7.zip"
+                            data-lang="php">Czerwiec 2025
+                            wersja 7 <span class="language php" data-lang="php">PHP</span></a>
+                        <a class="file-item" data-year="2025" href="download/Czerwiec 2025 wersja 8.zip"
+                            data-lang="php js">Czerwiec 2025
+                            wersja 8 <span class="language php" data-lang="php">PHP</span>
+                            <div class="language js" style="right: 100px;">JS</div>
+                        </a>
+                        <a class="file-item" data-year="2025" href="download/Czerwiec 2025 wersja 9.zip"
+                            data-lang="php">Czerwiec 2025
+                            wersja 9 <span class="language php" data-lang="php">PHP</span></a>
+                        <a class="file-item" data-year="2025" href="download/Czerwiec 2025 wersja 10.zip"
+                            data-lang="php">Czerwiec 2025
+                            wersja 10 <span class="language php" data-lang="php">PHP</span></a>
+                        <a class="file-item" data-year="2025" href="download/Czerwiec 2025 wersja 11.zip"
+                            data-lang="php">Czerwiec 2025
+                            wersja 11 <span class="language php" data-lang="php">PHP</span></a>
+                        <a class="file-item" data-year="2025" href="download/Czerwiec 2025 wersja 12.zip"
+                            data-lang="php">Czerwiec 2025
+                            wersja 12 <span class="language php" data-lang="php">PHP</span></a>
                     </div>
                 </div>
                 <div class="month-group">
                     <div class="month-title">Styczeń 2025</div>
                     <div class="files-container">
-                        <a class="file-item" data-year="2025" href="download/Styczeń 2025 wersja 1.zip">Styczeń 2025
-                            wersja 1 <div class="language js">JS</div></a>
-                        <a class="file-item" data-year="2025" href="download/Styczeń 2025 wersja 2.zip">Styczeń 2025
-                            wersja 2 <div class="language js">JS</div></a>
-                        <a class="file-item" data-year="2025" href="download/Styczeń 2025 wersja 3.zip">Styczeń 2025
-                            wersja 3 <div class="language php">PHP</div></a>
-                        <a class="file-item" data-year="2025" href="download/Styczeń 2025 wersja 4.zip">Styczeń 2025
-                            wersja 4 <div class="language php">PHP</div></a>
-                        <a class="file-item" data-year="2025" href="download/Styczeń 2025 wersja 5.zip">Styczeń 2025
-                            wersja 5 <div class="language php">PHP</div></a>
-                        <a class="file-item" data-year="2025" href="download/Styczeń 2025 wersja 6.zip">Styczeń 2025
-                            wersja 6 <div class="language js">JS</div></a>
-                        <a class="file-item" data-year="2025" href="download/Styczeń 2025 wersja 7.zip">Styczeń 2025
-                            wersja 7 <div class="language php">PHP</div></a>
-                        <a class="file-item" data-year="2025" href="download/Styczeń 2025 wersja 8.zip">Styczeń 2025
-                            wersja 8 <div class="language php">PHP</div></a>
-                        <a class="file-item" data-year="2025" href="download/Styczeń 2025 wersja 9.zip">Styczeń 2025
-                            wersja 9 <div class="language php">PHP</div></a>
-                        <a class="file-item" data-year="2025" href="download/Styczeń 2025 wersja 10.zip">Styczeń 2025
-                            wersja 10 <div class="language php">PHP</div></a>
-                        <a class="file-item" data-year="2025" href="download/Styczeń 2025 wersja 11.zip">Styczeń 2025
-                            wersja 11 <div class="language php">PHP</div></a>
-                        <a class="file-item" data-year="2025" href="download/Styczeń 2025 wersja 12.zip">Styczeń 2025
-                            wersja 12 <div class="language php">PHP</div></a>
+                        <a class="file-item" data-year="2025" href="download/Styczeń 2025 wersja 1.zip"
+                            data-lang="js">Styczeń 2025
+                            wersja 1 <span class="language js" data-lang="js">JS</span></a>
+                        <a class="file-item" data-year="2025" href="download/Styczeń 2025 wersja 2.zip"
+                            data-lang="js">Styczeń 2025
+                            wersja 2 <span class="language js" data-lang="js">JS</span></a>
+                        <a class="file-item" data-year="2025" href="download/Styczeń 2025 wersja 3.zip"
+                            data-lang="php">Styczeń 2025
+                            wersja 3 <span class="language php" data-lang="php">PHP</span></a>
+                        <a class="file-item" data-year="2025" href="download/Styczeń 2025 wersja 4.zip"
+                            data-lang="php">Styczeń 2025
+                            wersja 4 <span class="language php" data-lang="php">PHP</span></a>
+                        <a class="file-item" data-year="2025" href="download/Styczeń 2025 wersja 5.zip"
+                            data-lang="php">Styczeń 2025
+                            wersja 5 <span class="language php" data-lang="php">PHP</span></a>
+                        <a class="file-item" data-year="2025" href="download/Styczeń 2025 wersja 6.zip"
+                            data-lang="js">Styczeń 2025
+                            wersja 6 <span class="language js" data-lang="js">JS</span></a>
+                        <a class="file-item" data-year="2025" href="download/Styczeń 2025 wersja 7.zip"
+                            data-lang="php">Styczeń 2025
+                            wersja 7 <span class="language php" data-lang="php">PHP</span></a>
+                        <a class="file-item" data-year="2025" href="download/Styczeń 2025 wersja 8.zip"
+                            data-lang="php">Styczeń 2025
+                            wersja 8 <span class="language php" data-lang="php">PHP</span></a>
+                        <a class="file-item" data-year="2025" href="download/Styczeń 2025 wersja 9.zip"
+                            data-lang="php">Styczeń 2025
+                            wersja 9 <span class="language php" data-lang="php">PHP</span></a>
+                        <a class="file-item" data-year="2025" href="download/Styczeń 2025 wersja 10.zip"
+                            data-lang="php">Styczeń 2025
+                            wersja 10 <span class="language php" data-lang="php">PHP</span></a>
+                        <a class="file-item" data-year="2025" href="download/Styczeń 2025 wersja 11.zip"
+                            data-lang="php">Styczeń 2025
+                            wersja 11 <span class="language php" data-lang="php">PHP</span></a>
+                        <a class="file-item" data-year="2025" href="download/Styczeń 2025 wersja 12.zip"
+                            data-lang="php">Styczeń 2025
+                            wersja 12 <span class="language php" data-lang="php">PHP</span></a>
                     </div>
                 </div>
             </div>
@@ -520,60 +553,84 @@
                 <div class="month-group">
                     <div class="month-title">Czerwiec 2024</div>
                     <div class="files-container">
-                        <a class="file-item" data-year="2024" href="download/Czerwiec 2024 wersja 1.zip">Czerwiec 2024
-                            wersja 1 <div class="language php">PHP</div></a>
-                        <a class="file-item" data-year="2024" href="download/Czerwiec 2024 wersja 2.zip">Czerwiec 2024
-                            wersja 2 <div class="language js">JS</div></a>
-                        <a class="file-item" data-year="2024" href="download/Czerwiec 2024 wersja 3.zip">Czerwiec 2024
-                            wersja 3 <div class="language php">PHP</div></a>
-                        <a class="file-item" data-year="2024" href="download/Czerwiec 2024 wersja 4.zip">Czerwiec 2024
-                            wersja 4 <div class="language php">PHP</div></a>
-                        <a class="file-item" data-year="2024" href="download/Czerwiec 2024 wersja 5.zip">Czerwiec 2024
-                            wersja 5 <div class="language php">PHP</div></a>
-                        <a class="file-item" data-year="2024" href="download/Czerwiec 2024 wersja 6.zip">Czerwiec 2024
-                            wersja 6 <div class="language js">JS</div></a>
-                        <a class="file-item" data-year="2024" href="download/Czerwiec 2024 wersja 7.zip">Czerwiec 2024
-                            wersja 7 <div class="language php">PHP</div></a>
-                        <a class="file-item" data-year="2024" href="download/Czerwiec 2024 wersja 8.zip">Czerwiec 2024
-                            wersja 8 <div class="language js">JS</div></a>
-                        <a class="file-item" data-year="2024" href="download/Czerwiec 2024 wersja 9.zip">Czerwiec 2024
-                            wersja 9 <div class="language js">JS</div></a>
-                        <a class="file-item" data-year="2024" href="download/Czerwiec 2024 wersja 10.zip">Czerwiec 2024
-                            wersja 10 <div class="language js">JS</div></a>
-                        <a class="file-item" data-year="2024" href="download/Czerwiec 2024 wersja 11.zip">Czerwiec 2024
-                            wersja 11 <div class="language php">PHP</div></a>
-                        <a class="file-item" data-year="2024" href="download/Czerwiec 2024 wersja 12.zip">Czerwiec 2024
-                            wersja 12 <div class="language js">JS</div></a>
+                        <a class="file-item" data-year="2024" href="download/Czerwiec 2024 wersja 1.zip"
+                            data-lang="php">Czerwiec 2024
+                            wersja 1 <span class="language php" data-lang="php">PHP</span></a>
+                        <a class="file-item" data-year="2024" href="download/Czerwiec 2024 wersja 2.zip"
+                            data-lang="js">Czerwiec 2024
+                            wersja 2 <span class="language js" data-lang="js">JS</span></a>
+                        <a class="file-item" data-year="2024" href="download/Czerwiec 2024 wersja 3.zip"
+                            data-lang="php">Czerwiec 2024
+                            wersja 3 <span class="language php" data-lang="php">PHP</span></a>
+                        <a class="file-item" data-year="2024" href="download/Czerwiec 2024 wersja 4.zip"
+                            data-lang="php">Czerwiec 2024
+                            wersja 4 <span class="language php" data-lang="php">PHP</span></a>
+                        <a class="file-item" data-year="2024" href="download/Czerwiec 2024 wersja 5.zip"
+                            data-lang="php">Czerwiec 2024
+                            wersja 5 <span class="language php" data-lang="php">PHP</span></a>
+                        <a class="file-item" data-year="2024" href="download/Czerwiec 2024 wersja 6.zip"
+                            data-lang="js">Czerwiec 2024
+                            wersja 6 <span class="language js" data-lang="js">JS</span></a>
+                        <a class="file-item" data-year="2024" href="download/Czerwiec 2024 wersja 7.zip"
+                            data-lang="php">Czerwiec 2024
+                            wersja 7 <span class="language php" data-lang="php">PHP</span></a>
+                        <a class="file-item" data-year="2024" href="download/Czerwiec 2024 wersja 8.zip"
+                            data-lang="js">Czerwiec 2024
+                            wersja 8 <span class="language js" data-lang="js">JS</span></a>
+                        <a class="file-item" data-year="2024" href="download/Czerwiec 2024 wersja 9.zip"
+                            data-lang="js">Czerwiec 2024
+                            wersja 9 <span class="language js" data-lang="js">JS</span></a>
+                        <a class="file-item" data-year="2024" href="download/Czerwiec 2024 wersja 10.zip"
+                            data-lang="js">Czerwiec 2024
+                            wersja 10 <span class="language js" data-lang="js">JS</span></a>
+                        <a class="file-item" data-year="2024" href="download/Czerwiec 2024 wersja 11.zip"
+                            data-lang="php">Czerwiec 2024
+                            wersja 11 <span class="language php" data-lang="php">PHP</span></a>
+                        <a class="file-item" data-year="2024" href="download/Czerwiec 2024 wersja 12.zip"
+                            data-lang="js">Czerwiec 2024
+                            wersja 12 <span class="language js" data-lang="js">JS</span></a>
                     </div>
                 </div>
 
                 <div class="month-group">
                     <div class="month-title">Styczeń 2024</div>
                     <div class="files-container">
-                        <a class="file-item" data-year="2024" href="download/Styczeń 2024 wersja 1.zip">Styczeń 2024
-                            wersja 1 <div class="language js">JS</div></a>
-                        <a class="file-item" data-year="2024" href="download/Styczeń 2024 wersja 2.zip">Styczeń 2024
-                            wersja 2 <div class="language js">JS</div></a>
-                        <a class="file-item" data-year="2024" href="download/Styczeń 2024 wersja 3.zip">Styczeń 2024
-                            wersja 3 <div class="language js">JS</div></a>
-                        <a class="file-item" data-year="2024" href="download/Styczeń 2024 wersja 4.zip">Styczeń 2024
-                            wersja 4 <div class="language php">PHP</div></a>
-                        <a class="file-item" data-year="2024" href="download/Styczeń 2024 wersja 5.zip">Styczeń 2024
-                            wersja 5 <div class="language js">JS</div></a>
-                        <a class="file-item" data-year="2024" href="download/Styczeń 2024 wersja 6.zip">Styczeń 2024
-                            wersja 6 <div class="language php">PHP</div></a>
-                        <a class="file-item" data-year="2024" href="download/Styczeń 2024 wersja 7.zip">Styczeń 2024
-                            wersja 7 <div class="language js">JS</div></a>
-                        <a class="file-item" data-year="2024" href="download/Styczeń 2024 wersja 8.zip">Styczeń 2024
-                            wersja 8 <div class="language js">JS</div></a>
-                        <a class="file-item" data-year="2024" href="download/Styczeń 2024 wersja 9.zip">Styczeń 2024
-                            wersja 9 <div class="language js">JS</div></a>
-                        <a class="file-item" data-year="2024" href="download/Styczeń 2024 wersja 10.zip">Styczeń 2024
-                            wersja 10 <div class="language php">PHP</div></a>
-                        <a class="file-item" data-year="2024" href="download/Styczeń 2024 wersja 11.zip">Styczeń 2024
-                            wersja 11 <div class="language php">PHP</div></a>
-                        <a class="file-item" data-year="2024" href="download/Styczeń 2024 wersja 12.zip">Styczeń 2024
-                            wersja 12 <div class="language js">JS</div></a>
+                        <a class="file-item" data-year="2024" href="download/Styczeń 2024 wersja 1.zip"
+                            data-lang="js">Styczeń 2024
+                            wersja 1 <span class="language js" data-lang="js">JS</span></a>
+                        <a class="file-item" data-year="2024" href="download/Styczeń 2024 wersja 2.zip"
+                            data-lang="js   ">Styczeń 2024
+                            wersja 2 <span class="language js" data-lang="js">JS</span></a>
+                        <a class="file-item" data-year="2024" href="download/Styczeń 2024 wersja 3.zip"
+                            data-lang="js">Styczeń 2024
+                            wersja 3 <span class="language js" data-lang="js">JS</span></a>
+                        <a class="file-item" data-year="2024" href="download/Styczeń 2024 wersja 4.zip"
+                            data-lang="php">Styczeń 2024
+                            wersja 4 <span class="language php" data-lang="php">PHP</span></a>
+                        <a class="file-item" data-year="2024" href="download/Styczeń 2024 wersja 5.zip"
+                            data-lang="js">Styczeń 2024
+                            wersja 5 <span class="language js" data-lang="js">JS</span></a>
+                        <a class="file-item" data-year="2024" href="download/Styczeń 2024 wersja 6.zip"
+                            data-lang="php">Styczeń 2024
+                            wersja 6 <span class="language php" data-lang="php">PHP</span></a>
+                        <a class="file-item" data-year="2024" href="download/Styczeń 2024 wersja 7.zip"
+                            data-lang="js">Styczeń 2024
+                            wersja 7 <span class="language js" data-lang="js">JS</span></a>
+                        <a class="file-item" data-year="2024" href="download/Styczeń 2024 wersja 8.zip"
+                            data-lang="js">Styczeń 2024
+                            wersja 8 <span class="language js" data-lang="js">JS</span></a>
+                        <a class="file-item" data-year="2024" href="download/Styczeń 2024 wersja 9.zip"
+                            data-lang="js">Styczeń 2024
+                            wersja 9 <span class="language js" data-lang="js">JS</span></a>
+                        <a class="file-item" data-year="2024" href="download/Styczeń 2024 wersja 10.zip"
+                            data-lang="php">Styczeń 2024
+                            wersja 10 <span class="language php" data-lang="php">PHP</span></a>
+                        <a class="file-item" data-year="2024" href="download/Styczeń 2024 wersja 11.zip"
+                            data-lang="php">Styczeń 2024
+                            wersja 11 <span class="language php" data-lang="php">PHP</span></a>
+                        <a class="file-item" data-year="2024" href="download/Styczeń 2024 wersja 12.zip"
+                            data-lang="js">Styczeń 2024
+                            wersja 12 <span class="language js" data-lang="js">JS</span></a>
                     </div>
                 </div>
 
@@ -584,16 +641,21 @@
                 <div class="month-group">
                     <div class="month-title">Styczeń 2023</div>
                     <div class="files-container">
-                        <a class="file-item" data-year="2023" href="download/Styczeń 2023 wersja 1.zip">Styczeń 2023
-                            wersja 1 <div class="language js">JS</div></a>
-                        <a class="file-item" data-year="2023" href="download/Styczeń 2023 wersja 2.zip">Styczeń 2023
-                            wersja 2 <div class="language php">PHP</div></a>
-                        <a class="file-item" data-year="2023" href="download/Styczeń 2023 wersja 3.zip">Styczeń 2023
-                            wersja 3 <div class="language php">PHP</div></a>
-                        <a class="file-item" data-year="2023" href="download/Styczeń 2023 wersja 4.zip">Styczeń 2023
-                            wersja 4 <div class="language php">PHP</div></a>
-                        <a class="file-item" data-year="2023" href="download/Styczeń 2023 wersja 5.zip">Styczeń 2023
-                            wersja 5 <div class="language php">PHP</div></a>
+                        <a class="file-item" data-year="2023" href="download/Styczeń 2023 wersja 1.zip"
+                            data-lang="js">Styczeń 2023
+                            wersja 1 <span class="language js" data-lang="js">JS</span></a>
+                        <a class="file-item" data-year="2023" href="download/Styczeń 2023 wersja 2.zip"
+                            data-lang="php">Styczeń 2023
+                            wersja 2 <span class="language php" data-lang="php">PHP</span></a>
+                        <a class="file-item" data-year="2023" href="download/Styczeń 2023 wersja 3.zip"
+                            data-lang="php">Styczeń 2023
+                            wersja 3 <span class="language php" data-lang="php">PHP</span></a>
+                        <a class="file-item" data-year="2023" href="download/Styczeń 2023 wersja 4.zip"
+                            data-lang="php">Styczeń 2023
+                            wersja 4 <span class="language php" data-lang="php">PHP</span></a>
+                        <a class="file-item" data-year="2023" href="download/Styczeń 2023 wersja 5.zip"
+                            data-lang="php">Styczeń 2023
+                            wersja 5 <span class="language php" data-lang="php">PHP</span></a>
                     </div>
                 </div>
 
@@ -610,16 +672,58 @@
 
 
         <script>
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            filterButtons.forEach(btn => {
+            const yearButtons = document.querySelectorAll('.filter-btn');
+            const langButtons = document.querySelectorAll('.lang-btn');
+            const items = document.querySelectorAll('.file-item');
+
+            let selectedYear = 'all';
+            let selectedLang = 'all';
+
+            function normalizeLang(value) {
+                return (value || '')
+                    .toLowerCase()
+                    .trim()
+                    .split(/\s+/)
+                    .filter(Boolean);
+            }
+
+            function filter() {
+                items.forEach(item => {
+                    const itemYear = item.dataset.year;
+                    const itemLangs = normalizeLang(item.dataset.lang);
+
+                    const matchYear =
+                        selectedYear === 'all' ||
+                        itemYear === selectedYear;
+
+                    const matchLang =
+                        selectedLang === 'all' ||
+                        itemLangs.includes(selectedLang);
+
+                    item.style.display = (matchYear && matchLang) ? 'block' : 'none';
+                });
+            }
+
+            yearButtons.forEach(btn => {
                 btn.addEventListener('click', () => {
-                    filterButtons.forEach(b => b.classList.remove('active'));
+                    yearButtons.forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
-                    const year = btn.getAttribute('data-year');
-                    document.querySelectorAll('.year-section').forEach(section => {
-                        section.style.display = (year === 'all' || section.getAttribute('data-year') === year) ? 'block' : 'none';
-                    });
+
+                    selectedYear = btn.dataset.year;
+                    filter();
                 });
             });
+
+            langButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    langButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    selectedLang = btn.dataset.lang;
+                    filter();
+                });
+            });
+
+            filter();
         </script>
 </body>
